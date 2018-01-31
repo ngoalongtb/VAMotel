@@ -1,0 +1,522 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from phongtot.vn/phong-tro-nha-tro by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2018 14:23:02 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
+    <title>Tìm phòng trọ</title>
+    <link rel="stylesheet" href="~/Public/Client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Public/Client/css/fonts.css">
+    <link rel="stylesheet" href="~/Public/Client/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Public/Client/css/component.css">
+    <link rel="stylesheet" href="~/Public/Client/css/app.css">
+    <link rel="stylesheet" href="~/Public/Client/css/jquery-gmaps-latlon-picker.css">
+    <script src="~/Public/Client/js/jquery-1.11.3.min.js"></script>
+    <script src="~/Public/Client/js/bootstrap.min.js"></script>
+    <script src="~/Public/Client/js/multiple-select.js"></script>
+    <script src="~/Public/Client/js/owl.carousel.min.js"></script>
+    <script src="~/Public/Client/js/ion.rangeSlider.js"></script>
+    <script src="~/Public/Client/js/jquery.maskMoney.js"></script>
+    <!-- Load WysiBB JS and Theme -->
+    <script src="~/Public/Client/js/wysibb/jquery.wysibb.min.js"></script>
+    <link rel="stylesheet" href="~/Public/Client/js/wysibb/theme/default/wbbtheme.css" />
+</head>
+<body>
+    <header id="header" class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <a class="logo" href="index.html"><img class="img-responsive" src="~/Public/Client/img/phongtot_logo.png"></a>
+                    </div>
+                    <div class="pull-right">
+                        <div class="header-top-avatar"><img class="img-responsive" src="~/Public/Client/img/avatar.png"></div>
+                        <div class="header-top-user">
+                            <div class="user-login"><a class="load_modal_login" href="#tab_auth_login" data-toggle="modal" data-target="#modal_auth">Đăng nhập</a></div>
+                            <div class="user-register load_modal_register"><a href="javascript: void(0);" data-toggle="modal" data-target="#modal_auth">Tạo tài khoản</a></div>
+                        </div>
+                    </div>
+                    <div class="pull-right">
+                        <a class="btn btn-submit-room load_modal_login" data-toggle="modal" data-target="#modal_auth" href="javascript: void(0);">Đăng tin miễn phí</a>
+                    </div>
+                    <div class="modal fade" id="modal_auth" tabindex="-1" role="dialog" aria-labelledby="login_modal_label" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="row-fluid">
+                                    <div class="col-md-12">
+                                        <div class="modal_auth_wrap">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <ul class="nav nav-tabs no-margin">
+                                                <li id="li_login" class="active"><a href="#tab_auth_login" data-toggle="tab">ĐĂNG NHẬP</a></li>
+                                                <li id="li_register"><a href="#tab_auth_register" data-toggle="tab">ĐĂNG KÝ</a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade in active" id="tab_auth_login">
+                                                    <form class="form-horizontal frm-login-ajax1 frm-user-ajax" id="frm-login-ajax1" role="form" method="POST" action="http://phongtot.vn/dang-nhap">
+                                                        <div class="hide alert alert-danger"></div>
+                                                        <input type="hidden" name="_token" value="G9EAAUnzJeE09TVtJByFUf9R8WQkCIgFwZzqqe6Z">
+                                                        <input type="hidden" name="current_url" value="phong-tro-nha-tro.html">
+                                                        <div class="form-group">
+                                                            <label for="email" class="col-sm-3 col-md-3 control-label">Email</label>
+                                                            <div class="col-sm-8 col-md-8">
+                                                                <input type="email" class="form-control" name="email" id="email" placeholder="Địa chỉ email ..." value="">
+                                                                <span class="help-block"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="password" class="col-sm-3 col-md-3 control-label">Mật khẩu</label>
+                                                            <div class="col-sm-8 col-md-8">
+                                                                <input type="password" name="password" class="form-control" id="password" placeholder="Mật khẩu ...">
+                                                                <span class="help-block"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-sm-3 col-md-3 control-label"></label>
+                                                            <div class="col-sm-8 col-md-8">
+                                                                <div class="pull-left help-block"><input type="checkbox" name="remember"> Ghi nhớ đăng nhập</div>
+                                                                <div class="pull-right"><button type="submit" class="btn btn-auth-submit">Đăng nhập</button></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-center">
+                                                                <a href="https://www.facebook.com/v2.5/dialog/oauth?client_id=810519435625421&amp;redirect_uri=http%3A%2F%2Fphongtot.vn%2Fsocial%2Ffacebook%2F&amp;scope=email&amp;response_type=code&amp;state=zNBL1Im3WP4pmGCjRX3PYrPmPkn5ZDRAaiOWWl6i" class="btn btn-md btn-social btn-facebook"> <i class="fa fa-facebook"></i> Đăng nhập bằng Facebook </a>
+                                                                <a href="https://accounts.google.com/o/oauth2/auth?client_id=354105350296-kcsi32tpijp59eca2ii2edffr595ikbv.apps.googleusercontent.com&amp;redirect_uri=http%3A%2F%2Fphongtot.vn%2Fsocial%2Fgoogle&amp;scope=openid+profile+email&amp;response_type=code&amp;state=yJ6c3DAMW6UN8u4GlenbG97TCjjhivCfM7mQxq2p" class="btn btn-md btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> Đăng nhập bằng Google </a>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="text-center text-center-auth">
+                                                                <p><a class="btn btn-link" href="index.html">Khôi phục mật khẩu</a> để tìm lại mật khẩu</p>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="tab-pane fade" id="tab_auth_register">
+                                                    <form class="form-horizontal frm-user-ajax" id="frm-register-ajax" role="form" method="POST" action="http://phongtot.vn/dang-ky">
+                                                        <div class="hide alert alert-danger"></div>
+                                                        <input type="hidden" name="_token" value="G9EAAUnzJeE09TVtJByFUf9R8WQkCIgFwZzqqe6Z">
+                                                        <input type="hidden" name="current_url" value="phong-tro-nha-tro.html">
+                                                        <div class="form-group">
+                                                            <label for="txt_fullname" class="col-sm-4 control-label">Tên hiển thị</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="name" class="form-control" id="name" placeholder="Tên hiển thị ..." value="">
+                                                                <span class="help-block"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txt_email" class="col-sm-4 control-label">Email</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="email" name="email" class="form-control" id="email" placeholder="Email ..." value="">
+                                                                <span class="help-block"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txt_password" class="col-sm-4 control-label">Mật khẩu</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="password" name="password" class="form-control" id="password" placeholder="Mật khẩu ...">
+                                                                <span class="help-block"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txt_password2" class="col-sm-4 control-label">Xác nhận mật khẩu</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="password" name="repassword" class="form-control" id="password_confirmation" placeholder="Xác nhận mật khẩu ...">
+                                                                <span class="help-block"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="txt_confirm" class="col-sm-4 control-label">Xác nhận</label>
+                                                            <div class="col-sm-6">
+                                                                <input type="text" name="captcha" class="form-control" id="captcha" placeholder="Mã xác nhận ..." value="">
+                                                                <span class="help-block"></span>
+                                                                <span class="help-block"><small>Gồm 5 ký tự phân biệt chữ Hoa và chữ thường. </small></span>
+                                                                <div class="col-md-12">
+                                                                    <img src="captcha/defaultbf03.png?C56ASGhG" alt="captcha" class="captcha-img" data-refresh-config="default">
+                                                                    <span class="pull-right"><a title="Lấy mã xác nhận mới" class="recapcha enable-tooltip" href="javascript:void(0);"><i class="fa fa-refresh fa-2x text-success"></i></a></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <script type="text/javascript">
+                                    $('.recapcha').on('click', function () {
+                                        var captcha = $('img.captcha-img');
+                                        var config = captcha.data('refresh-config');
+                                        $.ajax({
+                                            method: 'GET',
+                                            url: '/get_captcha/' + config,
+                                        }).done(function (response) {
+                                            captcha.prop('src', response);
+                                        });
+                                    });
+                                                        </script>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-offset-4 col-sm-8">
+                                                                <button type="submit" class="btn btn-auth-submit">Đăng ký tài khoản</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <hr>
+                                                    <div class="text-center">
+                                                        <a href="https://www.facebook.com/v2.5/dialog/oauth?client_id=810519435625421&amp;redirect_uri=http%3A%2F%2Fphongtot.vn%2Fsocial%2Ffacebook%2F&amp;scope=email&amp;response_type=code&amp;state=zNBL1Im3WP4pmGCjRX3PYrPmPkn5ZDRAaiOWWl6i" class="btn btn-md btn-social btn-facebook"> <i class="fa fa-facebook"></i> Đăng ký bằng Facebook </a>
+                                                        <a href="https://www.facebook.com/v2.5/dialog/oauth?client_id=810519435625421&amp;redirect_uri=http%3A%2F%2Fphongtot.vn%2Fsocial%2Ffacebook%2F&amp;scope=email&amp;response_type=code&amp;state=zNBL1Im3WP4pmGCjRX3PYrPmPkn5ZDRAaiOWWl6i" class="btn btn-md btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> Đăng ký bằng Google </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                    $('body').on('click', '.load_modal_login', function(e){
+                        $('#li_register').removeClass('active');
+                        $('#li_login').addClass('active');
+                        $('#tab_auth_register').removeClass('in active');
+                        $('#tab_auth_login').addClass('in active');
+                    });
+                    $('body').on('click', '.load_modal_register', function(e){
+                        $('#li_login').removeClass('active');
+                        $('#li_register').addClass('active');
+                        $('#tab_auth_login').removeClass('in active');
+                        $('#tab_auth_register').addClass('in active');
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </header>        <!-- End header top -->
+    <div class="clearfix"></div>
+    <div id="header_nav" class="header-nav">
+        <nav class="navbar">
+            <div class="container">
+                <div class="row block-navbar">
+                    <div class="col-md-12">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="index.html"><span class="fa fa-home"></span></a>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#">Phòng trọ</a></li>
+                                <li><a href="#">Văn phòng</a></li>
+                                <li><a href="#">Giới thiệu</a>/a></li>
+                                <li><a href="#">Liên hệ</a></li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>        <div class="clearfix"></div>
+    <!-- End menu -->
+    <script>
+$(document).ready(function () {
+    $(".btn-select").each(function (e) {
+        var value = $(this).find("ul li.selected").html();
+        if (value != undefined) {
+            $(this).find(".btn-select-input").val(value);
+            $(this).find(".btn-select-value").html(value);
+        }
+    });
+});
+$(document).on('click', '.btn-select', function (e) {
+    e.preventDefault();
+    var ul = $(this).find("ul");
+    if ($(this).hasClass("active")) {
+        if (ul.find("li").is(e.target)) {
+            var target = $(e.target);
+            target.addClass("selected").siblings().removeClass("selected");
+            var value = target.val();
+            var html = target.html();
+            $(this).find(".btn-select-input").val(value);
+            $(this).find(".btn-select-value").html(html);
+        }
+        ul.hide();
+        $(this).removeClass("active");
+    }
+    else {
+        $('.btn-select').not(this).each(function () {
+            $(this).removeClass("active").find("ul").hide();
+        });
+        ul.slideDown(300);
+        $(this).addClass("active");
+    }
+});
+
+$(document).on('click', function (e) {
+    var target = $(e.target).closest(".btn-select");
+    if (!target.length) {
+        $(".btn-select").removeClass("active").find("ul").hide();
+    }
+});
+    </script>                <!-- End slider -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="col-md-3 sidebar">
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
+                        <div class="advance-search">
+                            <div class="title">
+                                <a id="submit_search" href="javascript:void(0);"><span class="fa fa-search"></span></a>Tìm kiếm nâng cao
+                            </div>
+                            <div class="shr"><hr></div>
+                            <form class="form" id="search_form" action="#" method="GET">
+                                <div class="form-group price">
+                                    <div class="price-title">Chọn khoảng giá</div>
+                                    <div class="range-slider">
+                                        <input type="text" class="js-range-slider" value="" />
+                                    </div>
+                                    <div class="extra-controls">
+                                        <div class="form-group input-price">
+                                            <div class="price-from">
+                                                <div class="input-group">
+                                                    <input name="price_from" type="text" maxlength="4" value="0" class="inp js-from form-control" />
+                                                    <span class="input-group-addon">Triệu</span>
+                                                </div>
+                                            </div>
+                                            <span class="input-price-title">Đến</span>
+                                            <div class="price-to">
+                                                <div class="input-group">
+                                                    <input name="price_to" type="text" maxlength="4" value="50" class="inp js-to form-control" />
+                                                    <span class="input-group-addon">Triệu</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group submit">
+                                    <button type="submit" class="btn btn-slide-search"><span class="fa fa-search"></span>Tìm kiếm</button>
+                                </div>
+                                <script type="text/javascript">
+                    var $range = $(".js-range-slider"),
+                        $from = $(".js-from"),
+                        $to = $(".js-to"),
+                        range,
+                        min = 0,
+                        max = 50,
+                        from,
+                        to;
+
+                    var updateValues = function () {
+                        $from.prop("value", from);
+                        $to.prop("value", to);
+                    };
+
+                    $range.ionRangeSlider({
+                        type: "double",
+                        min: min,
+                        max: max,
+                        step:0.5,
+                        prettify_enabled: false,
+                        from: $from.val(),
+                        to: $to.val(),
+                        grid: false,
+                        hide_min_max: true,
+                        hide_from_to:true,
+                        postfix: ' triệu đ',
+                        prefix: "$",
+                        keyboard: true,
+                        grid_num: 10,
+                        onChange: function (data) {
+                            from = data.from;
+                            to = data.to;
+
+                            updateValues();
+                        }
+                    });
+
+                    range = $range.data("ionRangeSlider");
+
+                    var updateRange = function () {
+                        range.update({
+                            from: from,
+                            to: to
+                        });
+                    };
+
+                    $from.on("change", function () {
+                        from = +$(this).prop("value");
+                        if (from < min) {
+                            from = min;
+                        }
+                        if (from > to) {
+                            from = to;
+                        }
+
+                        updateValues();
+                        updateRange();
+                    });
+
+                    $to.on("change", function () {
+                        to = +$(this).prop("value");
+                        if (to > max) {
+                            to = max;
+                        }
+                        if (to < from) {
+                            to = from;
+                        }
+
+                        updateValues();
+                        updateRange();
+                    });
+                                </script>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+    $(document).ready(function(){
+        $('#submit_search').on('click', function(){
+            $('#search_form').submit();
+        });
+        $('.get_province').on('click', function(e){
+            $('[name="district"]').attr('value','');
+            $('#district-select').text('Chọn quận, huyện');
+            var key = $(this).val();
+            var table = 'district';
+            $.ajax({
+                url: 'http://phongtot.vn/data_client',
+                type: 'POST',
+                data: {key: key,table: table, _token: 'G9EAAUnzJeE09TVtJByFUf9R8WQkCIgFwZzqqe6Z' },
+                dataType: 'json',
+                success: function(result){
+                    var html = '';
+                    $.each (result, function (key, item){
+                        var value = item['id'];
+                        var name = item['name'];
+                        html += '<li class="get_district" value="'+ value +'">'+ name +'</li>';
+                    });
+                    $('#districtGroup').html(html);
+                    // $('#districtGroup').append(html);
+                    $('#wardGroup').html('');
+                    $('[name="street[]"]').html('');
+                    $("select").multipleSelect({
+                        width: '100%',
+                        multiple: true,
+                        multipleWidth: 132,
+                        selectAll: false,
+                        placeholder: "Chọn Quận Huyện",
+                        // position: 'top',
+                        // maxHeight: 400
+                    });
+                }
+            });
+        });
+        $('body').on('click', '.get_district', function(e){
+            $('#wardGroup').html('');
+            $('[name="street[]"]').html('');
+            var key = $(this).val();
+            var table = 'ward';
+            $.ajax({
+                url: 'http://phongtot.vn/data_client',
+                type: 'POST',
+                data: {key: key,table: table, _token: 'G9EAAUnzJeE09TVtJByFUf9R8WQkCIgFwZzqqe6Z' },
+                dataType: 'json',
+                success: function(result){
+                    var html = '';
+                    $.each (result, function (key, item){
+                        var value = item['id'];
+                        var name = item['name'];
+                        html += '<option value="'+ value +'">'+ name +'</option>';
+                    });
+                    $('#wardGroup').html(html);
+                    $("select").multipleSelect({
+                        width: '100%',
+                        multiple: true,
+                        multipleWidth: 132,
+                        selectAll: false,
+                        placeholder: "Chọn Phường Xã",
+                        // position: 'top',
+                        // maxHeight: 400
+                    });
+                }
+            });
+            table = 'street';
+            $.ajax({
+                url: 'http://phongtot.vn/data_client',
+                type: 'POST',
+                data: {key: key,table: table, _token: 'G9EAAUnzJeE09TVtJByFUf9R8WQkCIgFwZzqqe6Z' },
+                dataType: 'json',
+                success: function(result){
+                    var html = '';
+                    $.each (result, function (key, item){
+                        var value = item['id'];
+                        var name = item['name'];
+                        html += '<option value="'+ value +'">'+ name +'</option>';
+                    });
+                    $('[name="street[]"]').html(html);
+                    $("select").multipleSelect({
+                        width: '100%',
+                        multiple: true,
+                        multipleWidth: 132,
+                        selectAll: false,
+                        placeholder: "Chọn đường/phố",
+                        // position: 'top',
+                        // maxHeight: 400
+                    });
+                }
+            });
+        });
+    });
+                </script>
+
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-12 sidebar-ads">
+                        <img class="img-responsive" src="../ngoaingu.net/~/Public/Client/img/ads1.html" alt="">
+                    </div>
+                </div>                
+                <div class="row">
+                    <div style="margin-bottom: 30px;" class="col-sm-6 col-md-12 sidebar-ads">
+                        <img class="img-responsive" src="../media.phongtot.vn/xc5tx4cj/ads-3-min.png" alt="">
+                    </div>
+                    <div class="col-sm-6 col-md-12 sidebar-ads">
+                        <img class="img-responsive" src="../media.phongtot.vn/xc5tx4cj/ads-4-min.png" alt="">
+                    </div>
+                </div>                    <div class="clearfix"></div>
+
+                <div id="sideBarBottom">
+
+                </div>
+                <script>
+                    $('#sideBarBottom').load('/Partial/SideBarBottom');
+                </script>
+            </div>
+        </div>
+    </div>
+    <!-- Start footer -->
+    <div id="footer"></div>        
+    <script>
+        $('#footer').load('/Partial/Footer')
+    </script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="~/Public/Client/js/jquery-gmaps-latlon-picker.js"></script>
+    <script src="../apis.google.com/js/platform.js" async defer></script>
+    <script src="~/Public/Client/js/app.js"></script>
+</body>
+<!-- Mirrored from phongtot.vn/phong-tro-nha-tro by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Jan 2018 14:23:46 GMT -->
+</html>
