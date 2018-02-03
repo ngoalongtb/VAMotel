@@ -1,0 +1,102 @@
+﻿@model Model.EF.BaiViet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Chi tiết tài khoản</h3>
+        </div>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.DanhMuc.ten)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DanhMuc.ten)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TaiKhoan.mat_khau)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TaiKhoan.mat_khau)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.tieu_de)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.tieu_de)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hinh_anh)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hinh_anh)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.noi_dung)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.noi_dung)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ngay_tao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ngay_tao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dia_chi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dia_chi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dien_tich)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dien_tich)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.gia_ca)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.gia_ca)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.do_uu_tien)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.do_uu_tien)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="box-footer">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ma }) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</section>

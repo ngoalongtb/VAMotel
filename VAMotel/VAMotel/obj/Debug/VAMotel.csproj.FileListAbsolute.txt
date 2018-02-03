@@ -80,3 +80,5 @@ C:\DATA\WORKSHOP\vân anh\VAMotel\VAMotel\bin\Microsoft.Owin.Security.MicrosoftA
 C:\DATA\WORKSHOP\vân anh\VAMotel\VAMotel\obj\Debug\VAMotel.csprojResolveAssemblyReference.cache
 C:\DATA\WORKSHOP\vân anh\VAMotel\VAMotel\obj\Debug\VAMotel.dll
 C:\DATA\WORKSHOP\vân anh\VAMotel\VAMotel\obj\Debug\VAMotel.pdb
+C:\DATA\WORKSHOP\vân anh\VAMotel\VAMotel\bin\Model.dll
+C:\DATA\WORKSHOP\vân anh\VAMotel\VAMotel\bin\Model.pdb
