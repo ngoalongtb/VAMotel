@@ -11,107 +11,112 @@ using VAMotel.Controllers;
 
 namespace VAMotel.Areas.Admin.Controllers
 {
-    public class CategoriesController : AdminController
+    public class GroupsController : BaseController
     {
         private Motel db = new Motel();
 
-        // GET: Admin/Categories
+        // GET: Admin/Groups
         public ActionResult Index()
         {
-            return View(db.DanhMucs.ToList());
+            var khuTroes = db.KhuTroes.Include(k => k.TaiKhoan);
+            return View(khuTroes.ToList());
         }
 
-        // GET: Admin/Categories/Details/5
+        // GET: Admin/Groups/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            if (danhMuc == null)
+            KhuTro khuTro = db.KhuTroes.Find(id);
+            if (khuTro == null)
             {
                 return HttpNotFound();
             }
-            return View(danhMuc);
+            return View(khuTro);
         }
 
-        // GET: Admin/Categories/Create
+        // GET: Admin/Groups/Create
         public ActionResult Create()
         {
+            ViewBag.chu_tro = new SelectList(db.TaiKhoans, "tai_khoan", "mat_khau");
             return View();
         }
 
-        // POST: Admin/Categories/Create
+        // POST: Admin/Groups/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ma,ten")] DanhMuc danhMuc)
+        public ActionResult Create([Bind(Include = "ma,da_xoa,dia_chi,chu_tro")] KhuTro khuTro)
         {
             if (ModelState.IsValid)
             {
-                db.DanhMucs.Add(danhMuc);
+                db.KhuTroes.Add(khuTro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(danhMuc);
+            ViewBag.chu_tro = new SelectList(db.TaiKhoans, "tai_khoan", "mat_khau", khuTro.chu_tro);
+            return View(khuTro);
         }
 
-        // GET: Admin/Categories/Edit/5
+        // GET: Admin/Groups/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            if (danhMuc == null)
+            KhuTro khuTro = db.KhuTroes.Find(id);
+            if (khuTro == null)
             {
                 return HttpNotFound();
             }
-            return View(danhMuc);
+            ViewBag.chu_tro = new SelectList(db.TaiKhoans, "tai_khoan", "mat_khau", khuTro.chu_tro);
+            return View(khuTro);
         }
 
-        // POST: Admin/Categories/Edit/5
+        // POST: Admin/Groups/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ma,ten")] DanhMuc danhMuc)
+        public ActionResult Edit([Bind(Include = "ma,da_xoa,dia_chi,chu_tro")] KhuTro khuTro)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(danhMuc).State = EntityState.Modified;
+                db.Entry(khuTro).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(danhMuc);
+            ViewBag.chu_tro = new SelectList(db.TaiKhoans, "tai_khoan", "mat_khau", khuTro.chu_tro);
+            return View(khuTro);
         }
 
-        // GET: Admin/Categories/Delete/5
+        // GET: Admin/Groups/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            if (danhMuc == null)
+            KhuTro khuTro = db.KhuTroes.Find(id);
+            if (khuTro == null)
             {
                 return HttpNotFound();
             }
-            return View(danhMuc);
+            return View(khuTro);
         }
 
-        // POST: Admin/Categories/Delete/5
+        // POST: Admin/Groups/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DanhMuc danhMuc = db.DanhMucs.Find(id);
-            db.DanhMucs.Remove(danhMuc);
+            KhuTro khuTro = db.KhuTroes.Find(id);
+            db.KhuTroes.Remove(khuTro);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

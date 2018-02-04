@@ -9,12 +9,13 @@ namespace VAMotel.Controllers
 {
 
     //extends BaseController
-    public class AuthenController : Controller
+    public class AuthenController : BaseController
     {
         //no view
         public ActionResult Logout()
         {
-            return RedirectToAction("Home");
+            Session.Remove("loginAccount");
+            return RedirectToAction("Index");
         }
 
         public ActionResult Profile()

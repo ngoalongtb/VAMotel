@@ -36,10 +36,11 @@ namespace VAMotel.Controllers
 
         public ActionResult HeaderTop()
         {
-            bool authen = true;
-            if (authen)
+            TaiKhoan loginAccount = (TaiKhoan)Session["LoginAccount"];
+
+            if (loginAccount != null)
             {
-                return View("HeaderTopAuthen");
+                return View("HeaderTopAuthen", loginAccount);
             }
             else
             {

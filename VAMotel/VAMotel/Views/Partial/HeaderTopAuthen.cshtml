@@ -1,4 +1,5 @@
-﻿@Layout = null;
+﻿@model Model.EF.TaiKhoan
+@Layout = null;
 
 <div class="container">
     <div class="row">
@@ -7,10 +8,10 @@
                 <a class="logo" href="/"><img class="img-responsive" src="~/Public/Client/img/phongtot_logo.png"></a>
             </div>
             <div class="pull-right">
-                <div class="header-top-avatar"><img class="img-responsive" src="https://lh3.googleusercontent.com/-HuydszzylPk/AAAAAAAAAAI/AAAAAAAAAEQ/zXAyBypLSdQ/photo.jpg?sz=50"></div>
+                <div class="header-top-avatar"><img class="img-responsive" src="~/Public/upload/account/@Model.hinh_anh"></div>
                 <div class="header-top-user">
                     <div class="user-name">
-                        <a href="/Authen/Profile">Luận Tạ Minh</a>
+                        <a href="/Authen/Profile">@Model.ten_hien_thi</a>
                     </div>
                     <div class="dropdown user-info">
                         <a href="javascript: void(0);" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Thông tin tài khoản <b class="caret"></b></a>

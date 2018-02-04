@@ -30,14 +30,16 @@
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane fade in active" id="tab_auth_login">
-                                            <form class="form-horizontal frm-login-ajax1 frm-user-ajax" id="frm-login-ajax1" role="form" method="POST" action="http://phongtot.vn/dang-nhap">
-                                                <div class="hide alert alert-danger"></div>
+
+
+                                            <form class="form-horizontal frm-login-ajax1 frm-user-ajax" id="formLogin" role="form" method="POST" action="/Page/Login">
+                                                <div class="hide alert alert-danger" id="messageLogin">Tài khoản hoặc mật khẩu không chính xác</div>
                                                 <input type="hidden" name="_token" value="G9EAAUnzJeE09TVtJByFUf9R8WQkCIgFwZzqqe6Z">
                                                 <input type="hidden" name="current_url" value="phong-tro-nha-tro.html">
                                                 <div class="form-group">
-                                                    <label for="email" class="col-sm-3 col-md-3 control-label">Email</label>
+                                                    <label for="email" class="col-sm-3 col-md-3 control-label">Tài khoản</label>
                                                     <div class="col-sm-8 col-md-8">
-                                                        <input type="email" class="form-control" name="email" id="email" placeholder="Địa chỉ email ..." value="">
+                                                        <input type="text" class="form-control" name="username" id="username" placeholder="Địa chỉ email ..." value="">
                                                         <span class="help-block"></span>
                                                     </div>
                                                 </div>
@@ -51,26 +53,52 @@
                                                 <div class="form-group">
                                                     <label class="col-sm-3 col-md-3 control-label"></label>
                                                     <div class="col-sm-8 col-md-8">
-                                                        <div class="pull-left help-block"><input type="checkbox" name="remember"> Ghi nhớ đăng nhập</div>
-                                                        <div class="pull-right"><button type="submit" class="btn btn-auth-submit">Đăng nhập</button></div>
+                                                        <div class="pull-right"><button type="button" id="btnLogin" class="btn btn-auth-submit">Đăng nhập</button></div>
                                                     </div>
                                                 </div>
                                                 <div class="clearfix"></div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="col-md-12 text-center">
-                                                        <a href="https://www.facebook.com/v2.5/dialog/oauth?client_id=810519435625421&amp;redirect_uri=http%3A%2F%2Fphongtot.vn%2Fsocial%2Ffacebook%2F&amp;scope=email&amp;response_type=code&amp;state=zNBL1Im3WP4pmGCjRX3PYrPmPkn5ZDRAaiOWWl6i" class="btn btn-md btn-social btn-facebook"> <i class="fa fa-facebook"></i> Đăng nhập bằng Facebook </a>
-                                                        <a href="https://accounts.google.com/o/oauth2/auth?client_id=354105350296-kcsi32tpijp59eca2ii2edffr595ikbv.apps.googleusercontent.com&amp;redirect_uri=http%3A%2F%2Fphongtot.vn%2Fsocial%2Fgoogle&amp;scope=openid+profile+email&amp;response_type=code&amp;state=yJ6c3DAMW6UN8u4GlenbG97TCjjhivCfM7mQxq2p" class="btn btn-md btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> Đăng nhập bằng Google </a>
+                                                        <a href="#" class="btn btn-md btn-social btn-facebook"> <i class="fa fa-facebook"></i> Đăng nhập bằng Facebook </a>
+                                                        <a href="#" class="btn btn-md btn-social btn-google-plus"> <i class="fa fa-google-plus"></i> Đăng nhập bằng Google </a>
                                                     </div>
                                                 </div>
                                                 <hr>
                                                 <div class="row">
                                                     <div class="text-center text-center-auth">
-                                                        <p><a class="btn btn-link" href="index.html">Khôi phục mật khẩu</a> để tìm lại mật khẩu</p>
+                                                        <p><a class="btn btn-link" href="#">Khôi phục mật khẩu</a> để tìm lại mật khẩu</p>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
+                                        <script>
+                                            $('#btnLogin').click(function () {
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "/Page/Login",
+                                                    data: {
+                                                        username: $('#username').val(),
+                                                        password: $('#password').val()
+                                                    },
+                                                    success: function (response) {
+                                                        if (response == "admin") {
+                                                            window.location.href = "/Admin/Dashboard/Index";
+                                                        } else if (response == "boss") {
+                                                            window.location.href = "/Admin/Groups/Index";
+                                                        } else if (response == "normal") {
+                                                            window.location.href = "/";
+                                                        } else {
+                                                            console.log('false');
+                                                            $('#messageLogin').removeClass('hide');
+                                                        }
+                                                    }
+                                                });
+                                            })
+                                        </script>
+
+
+
                                         <div class="tab-pane fade" id="tab_auth_register">
                                             <form class="form-horizontal frm-user-ajax" id="frm-register-ajax" role="form" method="POST" action="http://phongtot.vn/dang-ky">
                                                 <div class="hide alert alert-danger"></div>

@@ -7,10 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EF;
+using VAMotel.Controllers;
 
 namespace VAMotel.Areas.Admin.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : AdminController
     {
         private Motel db = new Motel();
 

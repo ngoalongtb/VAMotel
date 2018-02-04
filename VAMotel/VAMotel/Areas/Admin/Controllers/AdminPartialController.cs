@@ -1,20 +1,18 @@
-﻿using Model.EF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using VAMotel.Controllers;
 
 namespace VAMotel.Areas.Admin.Controllers
 {
-    public class DashboardController : AdminController
+    public class AdminPartialController : Controller
     {
-        
-        // GET: Admin/Dashboard
+        // GET: Admin/AdminPartial
         public ActionResult Index()
         {
             return View();
         }
+
     }
 }
