@@ -202,8 +202,12 @@
     <Compile Include="Areas\Admin\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Controllers\AuthenController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\PartialController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -7647,12 +7651,21 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Partial\SideBarBottom.cshtml" />
     <Content Include="Views\Partial\Footer.cshtml" />
+    <Content Include="Views\Partial\Menu.cshtml" />
+    <Content Include="Views\Shared\HeaderTop.cshtml" />
+    <Content Include="Views\Category\Detail.cshtml" />
+    <Content Include="Views\Post\Detail.cshtml" />
+    <Content Include="Views\Partial\HeaderTopAuthen.cshtml" />
+    <Content Include="Views\Partial\HeaderTopNotAuthen.cshtml" />
+    <Content Include="Views\Authen\Profile.cshtml" />
+    <Content Include="Views\Authen\UploadPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Public\upload\account\" />
     <Folder Include="Public\upload\post\" />
+    <Folder Include="Views\Page\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

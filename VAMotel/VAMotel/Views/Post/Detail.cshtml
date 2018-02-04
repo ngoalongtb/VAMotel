@@ -1,0 +1,67 @@
+﻿@model Model.EF.BaiViet
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HomeMaster.cshtml";
+}
+<div class="col-md-12 room-main-content">
+    <div class="pt-breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/">Trang chủ</a></li>
+        </ol>
+    </div><div class="room-list-category">
+        <div class="pull-left">
+            <a href="#"><h3><span>Trang chủ</span> <i class="fa fa-angle-right"></i></h3></a>
+        </div>
+        <div class="clearfix"></div>
+        <hr>
+    </div>
+    <div class="main-info">
+        <div class="row">
+            <div class="col-md-8 left-info no-padding-right">
+                <div class="address">
+                    <span class="btn info-label">Địa chỉ</span>
+                    <a class="" href="#">@Model.dia_chi</a>
+                </div>
+                <div class="size">
+                    <span class="btn info-label">Diện tích</span>
+                    <a href="#" class="btn info-data">@Model.dien_tich</a>
+                </div>
+                <div class="type">
+                    <span class="btn info-label">Giá cả</span>
+                    <a href="#" class="btn info-data">@Model.gia_ca</a>
+                </div>
+            </div>
+            <div class="col-md-4 info-contact no-padding-left">
+                <div class="contact-label">
+                    <a href="#"><span class="fa fa-mobile-phone"></span>Thông tin liên hệ</a>
+                </div>
+                <div class="chr"><hr></div>
+                <div class="info-price">
+                    <a href="#"><span class="fa fa-unlock-alt"></span>2,000,000 Đ/tháng</a>
+                </div>
+                <div class="info-boss">
+                    <a href="#"><span class="fa fa-user"></span>tran an</a>
+                </div>
+                <div class="info-phone">
+                    <a href="#"><span class="fa fa-mobile-phone"></span>0973746619</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="room-detail-des">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="des-label room-list-category">
+                    <div class="pull-left">
+                        <a href="javascript: void(0);"><h3><span>Thông tin</span> chi tiết <i class="fa fa-angle-right"></i></h3></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                </div>
+                <div class="dis-content">
+                    @Html.Raw(Model.noi_dung)    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
