@@ -2,11 +2,13 @@
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/HomeMaster.cshtml";
+
+    Model.EF.TaiKhoan LoginAccount = (Model.EF.TaiKhoan)Session["LoginAccount"];
 }
 <div class="col-md-12 room-main-content">
     <div class="pt-breadcrumb">
         <ol class="breadcrumb">
-            <li><a href="http://phongtot.vn">Trang chủ</a></li>
+            <li><a href="/">Trang chủ</a></li>
             <li class="active">Trang cá nhân</li>
         </ol>
     </div><div class="user_panel col-md-2 no-padding-vertical">
@@ -20,9 +22,8 @@
     <!-- End left menu -->
     <div class="user_panel col-md-10 user-panel-center-container">
         <div class="user-panel-info">
-            <div class="user-panel-name"><a href="http://phongtot.vn/trang-ca-nhan">Luận Tạ Minh</a></div>
-            <div class="user-panel-email"><a href="http://phongtot.vn/trang-ca-nhan">ngoalongtb001@gmail.com</a></div>
-            <a class="btn btn-submit-room" href="http://phongtot.vn/dang-tin">Đăng tin miễn phí</a>
+            <div class="user-panel-name"><a href="/Authen/Profile">@LoginAccount.ten_hien_thi</a></div>
+            <div class="user-panel-email"><a href="/Authen/Profile">@LoginAccount.email</a></div>
         </div><div class="user-panel-main-container">
             <!-- Nav tabs -->
             <div class="card">
@@ -33,10 +34,9 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="home">
-                        <form class="user-panel-main-container-info" method="POST" action="http://phongtot.vn/trang-ca-nhan/cap-nhat" enctype="multipart/form-data">
-                            <input type="hidden" name="_token" value="Fk6eDi2FacXjMTsGnRU82Dfp5J1OqcOpQfadwSl4">
+                        <form class="user-panel-main-container-info" method="POST" action="/Authen/ChangeProfile" id="formChangeProfile" enctype="multipart/form-data">
                             <div class="user-panel-info-title">Ảnh đại diện</div>
-                            <div class="user-avatar"><a href="http://phongtot.vn/trang-ca-nhan"><img class="img-responsive" src="https://lh3.googleusercontent.com/-HuydszzylPk/AAAAAAAAAAI/AAAAAAAAAEQ/zXAyBypLSdQ/photo.jpg?sz=50"></a></div>
+                            <div class="user-avatar"><a href="#"><img class="img-responsive" src="~/Public/upload/account/@LoginAccount.hinh_anh"></a></div>
                             <div class="user-panel-upload-avatar">
                                 <input type="file" name="avatar" value="">
                                 <span class="help-block"><div style="color:red;"></div>Kích thước ảnh tối đa 1MB.</span>
@@ -44,34 +44,20 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="hoten">Họ tên</label>
-                                        <input type="text" class="form-control" name="fullname" value="" placeholder="Họ tên">
+                                        <label for="hoten">Tên hiển thị</label>
+                                        <input type="text" class="form-control" name="ten_hien_thi" value="@LoginAccount.ten_hien_thi" placeholder="Họ tên">
                                         <span class="help-block" style="color:red;"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label for="ngaysinh">Ngày sinh</label>
-                                        <input type="text" class="form-control" name="birth" value="" placeholder="dd/mm/yyyy">
+                                        <label for="hoten">Tên</label>
+                                        <input type="text" class="form-control" name="ten" value="@LoginAccount.ten" placeholder="Họ tên">
                                         <span class="help-block" style="color:red;"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="ngaysinh">Giới tính</label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="gender" id="inlineRadio1" value="male"> Nam
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="gender" id="inlineRadio2" value="female"> Nữ
-                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Địa chỉ</label>
-                                        <input type="text" class="form-control" name="address" value="" placeholder="Địa chỉ">
-                                        <span class="help-block" style="color:red;"></span>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Điện thoại liên hệ</label>
-                                        <input type="text" class="form-control" name="phone" value="" placeholder="Phone">
+                                        <input type="text" class="form-control" name="so_dien_thoai" value="@LoginAccount.so_dien_thoai" placeholder="Địa chỉ">
                                         <span class="help-block" style="color:red;"></span>
                                     </div>
                                 </div>
@@ -82,21 +68,26 @@
                         </form>
                     </div>
                     <div role="tabpanel" class="tab-pane " id="profile">
-                        <form class="user-panel-main-container-info" method="POST" action="http://phongtot.vn/trang-ca-nhan/thay-mat-khau" enctype="multipart/form-data">
-                            <input type="hidden" name="_token" value="Fk6eDi2FacXjMTsGnRU82Dfp5J1OqcOpQfadwSl4">
+
+                        <form class="user-panel-main-container-info" method="POST" action="/Authen/ChangePassword" id="formChangePassword" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <span style="display: none" id="msgResult"></span>
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mật khẩu cũ</label>
-                                <input type="password" class="form-control" name="oldpassword" placeholder="Mật khẩu cũ">
+                                <input type="password" class="form-control" name="oldpassword" required placeholder="Mật khẩu cũ">
                                 <span class="help-block" style="color:red;"></span>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Mật khẩu mới</label>
-                                <input type="password" class="form-control" name="password" placeholder="Mật khẩu mới">
+                                <input type="password" class="form-control" name="password" required placeholder="Mật khẩu mới">
                                 <span class="help-block" style="color:red;"></span>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control" name="repassword" placeholder="Nhập lại mật khẩu">
+                                <br />
+                                <span style="display:none; color:red" id="msgRePassword">Mật khẩu không khớp</span>
+                                <input type="password" class="form-control" name="repassword" required placeholder="Nhập lại mật khẩu">
                                 <span class="help-block" style="color:red;"></span>
                             </div>
                             <button type="submit" class="btn">Submit</button>
@@ -108,3 +99,32 @@
     </div>
 </div>
 
+<script>
+
+    $(document).ready(function () {
+        $('#formChangeProfile').submit(function (e) {
+
+        })
+
+        $('#formChangePassword').submit(function (e) {
+            e.preventDefault();
+            if ($('[name="password"]').val() != $('[name="repassword"]').val()) {
+                $('#msgRePassword').show();
+            } else {
+                console.log("?? ")
+                $.post("/Authen/ChangePassword",{
+                        oldPassword: $('[name="oldpassword"]').val(),
+                        password: $('[name="password"]').val()
+                    },function (result) {
+                        if (result == "true") {
+                            $('#msgResult').css("color", "green").show().html("Cập nhật thành công");
+                        } else {
+                            $('#msgResult').css("color", "red").show().html("Mật khẩu không chính xác");
+                        }
+                    }
+                )
+
+            }
+        })
+    })
+</script>

@@ -11,10 +11,11 @@ namespace VAMotel.Controllers
     //extends BaseController
     public class AuthenController : BaseController
     {
+        public Motel db = new Motel();
         //no view
         public ActionResult Logout()
         {
-            Session.Remove("loginAccount");
+            Session.Remove("LoginAccount");
             return RedirectToAction("Index");
         }
 
@@ -24,15 +25,43 @@ namespace VAMotel.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChangeProfile()
+        public ActionResult ChangeProfile(TaiKhoan taiKhoan)
         {
-            return RedirectToAction("Home");
+            TaiKhoan loginAccount = (TaiKhoan)Session["LoginAccount"];
+
+            TaiKhoan _account = db.TaiKhoans.Find(loginAccount.tai_khoan);
+
+            _account.ten = taiKhoan.ten;
+            _account.ten_hien_thi = taiKhoan.ten_hien_thi;
+            _account.so_dien_thoai = taiKhoan.so_dien_thoai;
+
+            if (Request.Files.Count > 0 && Request.Files[0].FileName.Trim() != "")
+            {
+                string[] _arr = Request.Files[0].FileName.Split('.');
+                string type = _arr[_arr.Length - 1];
+
+                taiKhoan.hinh_anh = taiKhoan.tai_khoan + "." + type;
+                Request.Files[0].SaveAs(Server.MapPath("~/Public/upload/account/") + taiKhoan.hinh_anh);
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public ActionResult ChangePassword()
+        public string ChangePassword(string oldPassword, string password)
         {
-            return RedirectToAction("Home");
+            TaiKhoan loginAccount = (TaiKhoan)Session["LoginAccount"];
+
+            TaiKhoan _account = db.TaiKhoans.Find(loginAccount.tai_khoan);
+            if (_account.mat_khau == oldPassword)
+            {
+                _account.mat_khau = password;
+                db.SaveChanges();
+                return "true";
+            }
+            else return "false";
         }
 
         public ActionResult UploadPost()
