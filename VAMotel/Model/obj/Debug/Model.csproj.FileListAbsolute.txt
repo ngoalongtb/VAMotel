@@ -8,3 +8,13 @@ C:\DATA\WORKSHOP\vân anh\VAMotel\Model\bin\Debug\EntityFramework.SqlServer.xml
 C:\DATA\WORKSHOP\vân anh\VAMotel\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\DATA\WORKSHOP\vân anh\VAMotel\Model\obj\Debug\Model.dll
 C:\DATA\WORKSHOP\vân anh\VAMotel\Model\obj\Debug\Model.pdb
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\Model.dll.config
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\Model.dll
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\Model.pdb
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\EntityFramework.dll
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\EntityFramework.xml
+E:\WORKSHOP\VAMotel\VAMotel\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\WORKSHOP\VAMotel\VAMotel\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\WORKSHOP\VAMotel\VAMotel\Model\obj\Debug\Model.dll
+E:\WORKSHOP\VAMotel\VAMotel\Model\obj\Debug\Model.pdb

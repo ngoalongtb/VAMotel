@@ -205,6 +205,8 @@
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\GroupsController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoomsController.cs" />
+    <Compile Include="Areas\Admin\Models\DashboardModel.cs" />
     <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
@@ -7636,6 +7638,11 @@
     <Content Include="Areas\Admin\Views\Groups\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Groups\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Groups\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Rooms\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -7671,7 +7678,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\AdminPartial\" />
     <Folder Include="Areas\Admin\Views\Admin\" />
     <Folder Include="Public\upload\account\" />

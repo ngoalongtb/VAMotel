@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Model.EF.PhongTro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách phòng trọ</h3>
+            <a href="/Admin/Rooms/Create/@ViewBag.GroupId">Creat</a>
+        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.KhuTro.dia_chi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.so_phong)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nguoi_thue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cmtnd)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KhuTro.dia_chi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.so_phong)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nguoi_thue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cmtnd)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ma }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ma }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ma })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

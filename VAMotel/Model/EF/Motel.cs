@@ -17,7 +17,6 @@ namespace Model.EF
         public virtual DbSet<KhuTro> KhuTroes { get; set; }
         public virtual DbSet<LichSuThueNha> LichSuThueNhas { get; set; }
         public virtual DbSet<PhongTro> PhongTroes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -48,8 +47,16 @@ namespace Model.EF
                 .Property(e => e.nguoi_thue)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<LichSuThueNha>()
+                .Property(e => e.cmtnd)
+                .IsUnicode(false);
+
             modelBuilder.Entity<PhongTro>()
                 .Property(e => e.nguoi_thue)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PhongTro>()
+                .Property(e => e.cmtnd)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PhongTro>()
@@ -86,16 +93,6 @@ namespace Model.EF
                 .HasMany(e => e.KhuTroes)
                 .WithOptional(e => e.TaiKhoan)
                 .HasForeignKey(e => e.chu_tro);
-
-            modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.LichSuThueNhas)
-                .WithOptional(e => e.TaiKhoan)
-                .HasForeignKey(e => e.nguoi_thue);
-
-            modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.PhongTroes)
-                .WithOptional(e => e.TaiKhoan)
-                .HasForeignKey(e => e.nguoi_thue);
         }
     }
 }

@@ -72,7 +72,9 @@ namespace VAMotel.Controllers
         [HttpPost]
         public ActionResult UploadPost(BaiViet post)
         {
-            return RedirectToAction("Home");
+            db.BaiViets.Add(post);
+            db.SaveChanges();
+            return RedirectToRoute("/");
         }
     }
 }

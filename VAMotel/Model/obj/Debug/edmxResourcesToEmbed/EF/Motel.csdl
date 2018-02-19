@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLPhongTroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tieu_de" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hinh_anh" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="noi_dung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ngay_tao" Type="DateTime" Precision="3" />
+    <Property Name="nguoi_tao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="dia_chi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="dien_tich" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="gia_ca" Type="Int32" />
+    <Property Name="do_uu_tien" Type="Int32" />
+    <Property Name="ma_danh_muc" Type="Int32" />
+    <NavigationProperty Name="DanhMuc" Relationship="Self.FK__BaiViet__ma_danh__1CF15040" FromRole="BaiViet" ToRole="DanhMuc" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__BaiViet__nguoi_t__1A14E395" FromRole="BaiViet" ToRole="TaiKhoan" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ten" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiViets" Relationship="Self.FK__BaiViet__ma_danh__1CF15040" FromRole="DanhMuc" ToRole="BaiViet" />
+  </EntityType>
+  <EntityType Name="KhuTro">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dia_chi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="chu_tro" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__KhuTro__chu_tro__1B0907CE" FromRole="KhuTro" ToRole="TaiKhoan" />
+    <NavigationProperty Name="PhongTroes" Relationship="Self.FK__PhongTro__ma_khu__1BFD2C07" FromRole="KhuTro" ToRole="PhongTro" />
+  </EntityType>
+  <EntityType Name="LichSuThueNha">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ma_phong" Type="Int32" />
+    <Property Name="nguoi_thue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cmtnd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ngay_thue" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="PhongTro" Relationship="Self.FK__LichSuThu__ma_ph__1DE57479" FromRole="LichSuThueNha" ToRole="PhongTro" />
+  </EntityType>
+  <EntityType Name="PhongTro">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="so_phong" Type="Int32" />
+    <Property Name="ma_khu_tro" Type="Int32" />
+    <Property Name="nguoi_thue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cmtnd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KhuTro" Relationship="Self.FK__PhongTro__ma_khu__1BFD2C07" FromRole="PhongTro" ToRole="KhuTro" />
+    <NavigationProperty Name="LichSuThueNhas" Relationship="Self.FK__LichSuThu__ma_ph__1DE57479" FromRole="PhongTro" ToRole="LichSuThueNha" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+    </Key>
+    <Property Name="tai_khoan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mat_khau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ten_hien_thi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="hinh_anh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="loai_tai_khoan" Type="Int32" />
+    <Property Name="ten" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ngay_sinh" Type="DateTime" Precision="0" />
+    <Property Name="so_dien_thoai" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BaiViets" Relationship="Self.FK__BaiViet__nguoi_t__1A14E395" FromRole="TaiKhoan" ToRole="BaiViet" />
+    <NavigationProperty Name="KhuTroes" Relationship="Self.FK__KhuTro__chu_tro__1B0907CE" FromRole="TaiKhoan" ToRole="KhuTro" />
+  </EntityType>
+  <Association Name="FK__BaiViet__ma_danh__1CF15040">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="ma" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="ma_danh_muc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BaiViet__nguoi_t__1A14E395">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="nguoi_tao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KhuTro__chu_tro__1B0907CE">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="KhuTro" Type="Self.KhuTro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="KhuTro">
+        <PropertyRef Name="chu_tro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhongTro__ma_khu__1BFD2C07">
+    <End Role="KhuTro" Type="Self.KhuTro" Multiplicity="0..1" />
+    <End Role="PhongTro" Type="Self.PhongTro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuTro">
+        <PropertyRef Name="ma" />
+      </Principal>
+      <Dependent Role="PhongTro">
+        <PropertyRef Name="ma_khu_tro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuThu__ma_ph__1DE57479">
+    <End Role="PhongTro" Type="Self.PhongTro" Multiplicity="0..1" />
+    <End Role="LichSuThueNha" Type="Self.LichSuThueNha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhongTro">
+        <PropertyRef Name="ma" />
+      </Principal>
+      <Dependent Role="LichSuThueNha">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BaiViets" EntityType="Self.BaiViet" />
+    <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
+    <EntitySet Name="KhuTroes" EntityType="Self.KhuTro" />
+    <EntitySet Name="LichSuThueNhas" EntityType="Self.LichSuThueNha" />
+    <EntitySet Name="PhongTroes" EntityType="Self.PhongTro" />
+    <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+    <AssociationSet Name="FK__BaiViet__ma_danh__1CF15040" Association="Self.FK__BaiViet__ma_danh__1CF15040">
+      <End Role="DanhMuc" EntitySet="DanhMucs" />
+      <End Role="BaiViet" EntitySet="BaiViets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BaiViet__nguoi_t__1A14E395" Association="Self.FK__BaiViet__nguoi_t__1A14E395">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="BaiViet" EntitySet="BaiViets" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhuTro__chu_tro__1B0907CE" Association="Self.FK__KhuTro__chu_tro__1B0907CE">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="KhuTro" EntitySet="KhuTroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhongTro__ma_khu__1BFD2C07" Association="Self.FK__PhongTro__ma_khu__1BFD2C07">
+      <End Role="KhuTro" EntitySet="KhuTroes" />
+      <End Role="PhongTro" EntitySet="PhongTroes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuThu__ma_ph__1DE57479" Association="Self.FK__LichSuThu__ma_ph__1DE57479">
+      <End Role="PhongTro" EntitySet="PhongTroes" />
+      <End Role="LichSuThueNha" EntitySet="LichSuThueNhas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

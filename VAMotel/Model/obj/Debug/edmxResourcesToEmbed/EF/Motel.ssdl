@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLPhongTroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tieu_de" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="hinh_anh" Type="varchar" MaxLength="255" />
+    <Property Name="noi_dung" Type="nvarchar(max)" />
+    <Property Name="ngay_tao" Type="datetime" />
+    <Property Name="nguoi_tao" Type="varchar" MaxLength="255" />
+    <Property Name="dia_chi" Type="nvarchar" MaxLength="255" />
+    <Property Name="dien_tich" Type="nvarchar" MaxLength="255" />
+    <Property Name="gia_ca" Type="int" />
+    <Property Name="do_uu_tien" Type="int" />
+    <Property Name="ma_danh_muc" Type="int" />
+  </EntityType>
+  <EntityType Name="DanhMuc">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ten" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="KhuTro">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dia_chi" Type="nvarchar" MaxLength="255" />
+    <Property Name="chu_tro" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="LichSuThueNha">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ma_phong" Type="int" />
+    <Property Name="nguoi_thue" Type="varchar" MaxLength="255" />
+    <Property Name="cmtnd" Type="varchar" MaxLength="20" />
+    <Property Name="ngay_thue" Type="date" />
+  </EntityType>
+  <EntityType Name="PhongTro">
+    <Key>
+      <PropertyRef Name="ma" />
+    </Key>
+    <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="so_phong" Type="int" />
+    <Property Name="ma_khu_tro" Type="int" />
+    <Property Name="nguoi_thue" Type="varchar" MaxLength="255" />
+    <Property Name="cmtnd" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TaiKhoan">
+    <Key>
+      <PropertyRef Name="tai_khoan" />
+    </Key>
+    <Property Name="tai_khoan" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="mat_khau" Type="varchar" MaxLength="255" />
+    <Property Name="ten_hien_thi" Type="nvarchar" MaxLength="255" />
+    <Property Name="hinh_anh" Type="nvarchar" MaxLength="255" />
+    <Property Name="loai_tai_khoan" Type="int" />
+    <Property Name="ten" Type="varchar" MaxLength="255" />
+    <Property Name="ngay_sinh" Type="date" />
+    <Property Name="so_dien_thoai" Type="varchar" MaxLength="20" />
+    <Property Name="email" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__BaiViet__ma_danh__1CF15040">
+    <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMuc">
+        <PropertyRef Name="ma" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="ma_danh_muc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BaiViet__nguoi_t__1A14E395">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="BaiViet" Type="Self.BaiViet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="BaiViet">
+        <PropertyRef Name="nguoi_tao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KhuTro__chu_tro__1B0907CE">
+    <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+    <End Role="KhuTro" Type="Self.KhuTro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="tai_khoan" />
+      </Principal>
+      <Dependent Role="KhuTro">
+        <PropertyRef Name="chu_tro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LichSuThu__ma_ph__1DE57479">
+    <End Role="PhongTro" Type="Self.PhongTro" Multiplicity="0..1" />
+    <End Role="LichSuThueNha" Type="Self.LichSuThueNha" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhongTro">
+        <PropertyRef Name="ma" />
+      </Principal>
+      <Dependent Role="LichSuThueNha">
+        <PropertyRef Name="ma_phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhongTro__ma_khu__1BFD2C07">
+    <End Role="KhuTro" Type="Self.KhuTro" Multiplicity="0..1" />
+    <End Role="PhongTro" Type="Self.PhongTro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhuTro">
+        <PropertyRef Name="ma" />
+      </Principal>
+      <Dependent Role="PhongTro">
+        <PropertyRef Name="ma_khu_tro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLPhongTroModelStoreContainer">
+    <EntitySet Name="BaiViet" EntityType="Self.BaiViet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KhuTro" EntityType="Self.KhuTro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LichSuThueNha" EntityType="Self.LichSuThueNha" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhongTro" EntityType="Self.PhongTro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BaiViet__ma_danh__1CF15040" Association="Self.FK__BaiViet__ma_danh__1CF15040">
+      <End Role="DanhMuc" EntitySet="DanhMuc" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BaiViet__nguoi_t__1A14E395" Association="Self.FK__BaiViet__nguoi_t__1A14E395">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="BaiViet" EntitySet="BaiViet" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KhuTro__chu_tro__1B0907CE" Association="Self.FK__KhuTro__chu_tro__1B0907CE">
+      <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+      <End Role="KhuTro" EntitySet="KhuTro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LichSuThu__ma_ph__1DE57479" Association="Self.FK__LichSuThu__ma_ph__1DE57479">
+      <End Role="PhongTro" EntitySet="PhongTro" />
+      <End Role="LichSuThueNha" EntitySet="LichSuThueNha" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhongTro__ma_khu__1BFD2C07" Association="Self.FK__PhongTro__ma_khu__1BFD2C07">
+      <End Role="KhuTro" EntitySet="KhuTro" />
+      <End Role="PhongTro" EntitySet="PhongTro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

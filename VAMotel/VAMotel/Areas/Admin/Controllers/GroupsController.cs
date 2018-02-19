@@ -18,7 +18,8 @@ namespace VAMotel.Areas.Admin.Controllers
         // GET: Admin/Groups
         public ActionResult Index()
         {
-            var khuTroes = db.KhuTroes.Include(k => k.TaiKhoan);
+            TaiKhoan loginAccount = Session["LoginAccount"] as TaiKhoan;
+            var khuTroes = db.KhuTroes.Where(x=> x.TaiKhoan.tai_khoan == loginAccount.tai_khoan);
             return View(khuTroes.ToList());
         }
 
@@ -53,6 +54,8 @@ namespace VAMotel.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                TaiKhoan loginAccount = Session["LoginAccount"] as TaiKhoan;
+                khuTro.chu_tro = loginAccount.tai_khoan;
                 db.KhuTroes.Add(khuTro);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -87,6 +90,8 @@ namespace VAMotel.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                TaiKhoan loginAccount = Session["LoginAccount"] as TaiKhoan;
+                khuTro.chu_tro = loginAccount.tai_khoan;
                 db.Entry(khuTro).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

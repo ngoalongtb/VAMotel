@@ -6,7 +6,6 @@ CREATE DATABASE QLPhongTro
 GO
 USE QLPhongTro
 GO
-
 CREATE TABLE TaiKhoan(
 	tai_khoan VARCHAR(255) PRIMARY KEY,
 	mat_khau VARCHAR(255),
@@ -42,23 +41,23 @@ CREATE TABLE BaiViet(
 
 CREATE TABLE KhuTro(
 	ma INT IDENTITY PRIMARY KEY,
-	da_xoa BIT, --1:xoa
 	dia_chi NVARCHAR(255),
 	chu_tro VARCHAR(255)
 )
 
 CREATE TABLE PhongTro(
 	ma INT IDENTITY PRIMARY KEY,
-	da_xoa BIT, --1:xoa
 	so_phong INT,
-	ma_khu_tro INT, --
-	nguoi_thue VARCHAR(255)
+	ma_khu_tro INT, 
+	nguoi_thue VARCHAR(255),
+	cmtnd VARCHAR(20)
 )
 
 CREATE TABLE LichSuThueNha(
 	ma INT IDENTITY PRIMARY KEY,
 	ma_phong INT,
 	nguoi_thue VARCHAR(255),
+	cmtnd VARCHAR(20),
 	ngay_thue DATE
 )
 
@@ -71,8 +70,6 @@ ALTER TABLE KhuTro
 ADD FOREIGN KEY(chu_tro) REFERENCES TaiKhoan(tai_khoan)
 
 ALTER TABLE PhongTro
-ADD FOREIGN KEY(nguoi_thue) REFERENCES TaiKhoan(tai_khoan)
-ALTER TABLE PhongTro
 ADD FOREIGN KEY(ma_khu_tro) REFERENCES KhuTro(ma)
 
 ALTER TABLE BaiViet
@@ -80,6 +77,4 @@ ADD FOREIGN KEY(ma_danh_muc) REFERENCES DanhMuc(ma)
 
 ALTER TABLE LichSuThueNha
 ADD FOREIGN KEY(ma_phong) REFERENCES PhongTro(ma)
-ALTER TABLE LichSuThueNha
-ADD FOREIGN KEY(nguoi_thue) REFERENCES TaiKhoan(tai_khoan)
 

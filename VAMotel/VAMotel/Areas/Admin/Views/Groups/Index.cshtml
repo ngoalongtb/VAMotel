@@ -5,42 +5,43 @@
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
 }
 
-<h2>Index</h2>
+<section class="content container-fluid">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title">Danh sách danh mục</h3>
+            <h3>@Html.ActionLink("Tạo mới", "Create")</h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info-box" style="cursor:pointer;" onclick="window.location.href='/Admin/Rooms/Index?groupId=@item.ma'">
+                            <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TaiKhoan.mat_khau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.da_xoa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dia_chi)
-        </th>
-        <th></th>
-    </tr>
+                            <div class="info-box-content">
+                                <span class="info-box-text">@item.ma</span>
+                                <a href="/Admin/Groups/Edit/@item.ma" class="info-box-number">@item.dia_chi</a>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                }
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box" style="cursor:pointer;" onclick="window.location.href='/Admin/Groups/Create'">
+                        <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaiKhoan.mat_khau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.da_xoa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dia_chi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ma }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ma }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ma })
-        </td>
-    </tr>
-}
-
-</table>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Thêm mới</span>
+                            <span class="info-box-number"></span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

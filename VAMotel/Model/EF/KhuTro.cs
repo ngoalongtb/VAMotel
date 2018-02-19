@@ -1,4 +1,4 @@
-namespace Model.EF
+﻿namespace Model.EF
 {
     using System;
     using System.Collections.Generic;
@@ -16,14 +16,15 @@ namespace Model.EF
         }
 
         [Key]
+        [Display(Name = "Mã")]
         public int ma { get; set; }
 
-        public bool? da_xoa { get; set; }
-
         [StringLength(255)]
+        [Display(Name = "Địa chỉ")]
         public string dia_chi { get; set; }
 
         [StringLength(255)]
+        [Display(Name = "Chủ trọ")]
         public string chu_tro { get; set; }
 
         public virtual TaiKhoan TaiKhoan { get; set; }

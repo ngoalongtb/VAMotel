@@ -16,307 +16,69 @@
         <div class="clearfix"></div>
         <hr>
     </div>
-    <div id="step-3" class="col-md-10 no-padding-right submit-room-main-content" style="">
-        <div class="list-type-title">
-            <ul><li class="li-label">Bước 3 Nhập Thông Tin Chi Tiết</li></ul>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <div class="control-label">Tiêu đề</div>
-                    <div>
-                        <input type="text" id="title" name="title" class="form-control" value="">
-                        <span class="help-block"></span>
+    <form action="" method="post">
+        <div id="step-3" class="col-md-10 no-padding-right submit-room-main-content" style="">
+            <div class="list-type-title">
+                <ul><li class="li-label">Nhập thông tin bài đăng</li></ul>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="control-label">Tiêu đề</div>
+                        <div>
+                            <input type="text" id="title" name="tieu_de" class="form-control" value="">
+                            <span class="help-block"></span>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="control-label">Số điện thoại</div>
-                    <div>
-                        <input type="text" name="phone" class="form-control" value="">
-                        <span class="help-block"></span>
-                    </div>
-                </div>
-                <div class="col-md-6 no-padding-left">
                     <div class="form-group">
                         <div>
                             <div class="control-label">Giá</div>
                             <div class="input-group">
-                                <input type="text" name="price" class="form-control money-input" data-thousands="," data-decimal="." data-precision="0">
+                                <input type="text" name="gia_ca" class="form-control money-input" data-thousands="," data-decimal="." data-precision="0">
                                 <span class="input-group-addon">đ/tháng</span>
                             </div>
                             <span class="help-block"></span>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 no-padding-right">
                     <div class="form-group">
                         <div>
                             <div class="control-label">Diện tích</div>
                             <div class="input-group">
-                                <input type="text" name="acreage" value="" class="form-control" placeholder="nhập số, viết liền">
+                                <input type="text" name="dien_tich" value="" class="form-control" placeholder="nhập số, viết liền">
                                 <span class="input-group-addon">M<sup>2</sup></span>
                                 <span class="help-block"></span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="control-label">Tỉnh/Thành phố</div>
-                            <div>
-                                <select name="province_id" class="form-control address_input" size="1">
-                                    <option value="">Chọn</option>
-                                    <option value="1">Hà Nội</option>
-                                    <option value="31">Hải Phòng</option>
-                                    <option value="48">Đà Nẵng</option>
-                                    <option value="79">Hồ Chí Minh</option>
-                                    <option value="92">Cần Thơ</option>
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="control-label">Quận/Huyện</div>
-                            <div>
-                                <select name="district_id" class="form-control address_input" size="1">
-                                    <option value="">Chọn Tỉnh/Thành trước</option>
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <dv class="clearfix"></dv>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="control-label">Xã/Phường</div>
-                            <div>
-                                <select id="street_id" name="ward_id" class="form-control address_input" size="1">
-                                    <option value="">Chọn Quận/huyện trước</option>
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="control-label">Đường/Phố</div>
-                            <div>
-                                <select id="street" name="street_id" class="form-control address_input" size="1">
-                                    <option value="">Chọn Quận/huyện trước</option>
-                                </select>
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <div class="control-label">Địa chỉ cụ thể</div>
-                            <div>
-                                <input type="text" name="detail" class="form-control address_input" value="">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="additional-row" style="">
-                <div class="col-md-12">
-                    <div class="list-type-title">
-                        <ul><li class="li-label">Thông tin bổ sung <span> Nhà trọ, Phòng trọ</span></li></ul>
-                    </div>
-                </div>
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <div class="tang">
-                                    <div class="control-label">Tầng</div>
-                                    <div>
-                                        <select name="floor" class="form-control" size="1">
-                                            <option value="Chưa xác định">Chọn..</option>
-                                            <option value="1">Tầng 1</option>
-                                            <option value="2">Tầng 2</option>
-                                            <option value="3">Tầng 3</option>
-                                            <option value="4">Tầng 4</option>
-                                            <option value="5">Tầng 5</option>
-                                            <option value="6">Tầng 6</option>
-                                            <option value="7">Tầng 7</option>
-                                            <option value="8">Tầng 8</option>
-                                            <option value="9">Tầng 9</option>
-                                            <option value="10">Tầng 10</option>
-                                            <option value="Chưa xác định">Chưa xác định</option>
-                                        </select>
-                                        <span class="help-block"></span>
-                                    </div>
+                                <div class="control-label">Chi tiết</div>
+                                <div>
+                                    <textarea class="form-control" name="noi_dung" style="resize: none"></textarea>
+                                    <span class="help-block"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="form-group">
-                                <div class="vs">
-                                    <div class="control-label">Vệ sinh</div>
-                                    <div>
-                                        <select name="wc" class="form-control" size="1">
-                                            <option value="Chưa xác định">Chọn..</option>
-                                            <option value="Khép kín">Khép kín</option>
-                                            <option value="Chung">Chung</option>
-                                            <option value="Chưa xác định">Chưa xác định</option>
-                                        </select>
-                                        <span class="help-block"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group people-in">
-                        <div class="submit-info-title">Số người ở tối đa</div>
-                        <div>
-                            <select name="per_room" class="form-control" size="1">
-                                <option value="Chưa xác định">Chọn..</option>
-                                <option value="1">1 người</option>
-                                <option value="2">2 người</option>
-                                <option value="3">3 người</option>
-                                <option value="4">4 người</option>
-                                <option value="5">5 người</option>
-                                <option value="6">6 người</option>
-                                <option value="7">7 người</option>
-                                <option value="8">8 người</option>
-                                <option value="9">9 người</option>
-                                <option value="Chưa xác định">Chưa xác định</option>
-                            </select>
-                            <span class="help-block"></span>
-                        </div>
-                    </div>
-                    <div class="form-group price-elec-water">
-                        <div class="elec">
-                            <div class="submit-info-title">Giá điện</div>
-                            <select name="elec_set" class="form-control price_set" for="elec_price_extention" size="1">
-                                <option value="Chưa xác định">Chọn..</option>
-                                <option value="Nhà nước quy định">Giá nhà nước quy định</option>
-                                <option value="Theo đầu người">Giá theo đầu người</option>
-                                <option value="Chủ nhà quy định">Giá chủ nhà quy định</option>
-                                <option value="Chưa xác định">Giá chưa xác định</option>
-                            </select>
-                        </div>
-                        <div class="water">
-                            <div class="submit-info-title">Giá nước</div>
-                            <select name="water_set" class="form-control price_set" for="water_price_extention" size="1">
-                                <option value="Chưa xác định">Chọn..</option>
-                                <option value="Nhà nước quy định">Giá nhà nước quy định</option>
-                                <option value="Theo đầu người">Giá theo đầu người</option>
-                                <option value="Chủ nhà quy định">Giá chủ nhà quy định</option>
-                                <option value="Chưa xác định">Giá chưa xác định</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="price_group" class="form-group price-elec-water-input">
-                        <div class="elec elec_set"></div>
-                        <div class="water water_set"></div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="submit-info-title">Tiện ích của phòng</div>
-                    <div class="form-group room-option">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="dexe" value="Chỗ để xe">
-                                    <label for="dexe"> Chỗ để xe </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="sanphoi" value="Sân phơi">
-                                    <label for="sanphoi"> Sân phơi </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="bep" value="Thang máy">
-                                    <label for="bep"> Thang máy </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="internet" value="Internet">
-                                    <label for="internet"> Internet </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="dieuhoa" value="Điều hòa">
-                                    <label for="dieuhoa"> Điều hòa </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="nonglanh" value="Bình nóng lạnh">
-                                    <label for="nonglanh"> Bình nóng lạnh </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="maygiat" value="Máy giặt">
-                                    <label for="maygiat"> Máy giặt </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="tulanh" value="Truyền hình cáp">
-                                    <label for="tulanh"> TH cáp </label>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="checkbox checkbox-success">
-                                    <input type="checkbox" name="convenient[]" id="tivi" value="Tivi">
-                                    <label for="tivi"> Tivi </label>
+                                <div class="control-label">Địa chỉ cụ thể</div>
+                                <div>
+                                    <input type="text" name="dia_chi" class="form-control address_input" value="">
+                                    <span class="help-block"></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="clearfix" style="height: 5px;"></div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <div id="image-group">
-                        <label for="summary">
-                            <div class="control-label">Ảnh chi tiết của phòng </div>
-                            <a href="javascript: void(0);" class="btn btn-xs btn-primary pull-right" id="attachment-uploads"><div class="qq-uploader"><div class="qq-upload-drop-area" style="display: none;"><span>Drop files here to upload</span></div><div class="qq-upload-button" style="position: relative; overflow: hidden; direction: ltr;">Thêm ảnh<input multiple="multiple" type="file" name="file" style="position: absolute; right: 0px; top: 0px; font-family: Arial; font-size: 118px; margin: 0px; padding: 0px; cursor: pointer; opacity: 0;"></div></div></a>
-                            <span style="margin: 2px 7px 0px 0px; display: none;" class="pull-right" id="img-loading">
-                                <div class="col-md-4">
-                                    <img src="http://phongtot.vn/themes/client/img/loading-img.gif" class="img-responsive">
-                                </div>
-                            </span>
-                        </label>
-                        <div id="upload-error"></div>
-                        <div class="clearfix"><p></p></div>
-                        <div class="qq-uploader checkbox checkbox-success" id="list-image">
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
+                <div class="col-md-12 submit-btn-room">
+                    <button id="submit_form" class="btn btn-send-room" href="javascript:void(0);"><span class="fa fa-send"></span>Đăng tin</button>
                 </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-md-12">
-                <div class="submit-room-des">
-                    <div class="submit-info-title validate-require">Mô tả chi tiết</div>
-                    <div class="wysibb"><div class="wysibb-toolbar"><div class="wysibb-toolbar-container"><div class="wysibb-toolbar-btn wbb-bold"><span class="fonticon ve-tlb-bold1 btn-inner"></span><span class="btn-tooltip">Bold<ins></ins> <span class="tthotkey">[ctrl+b]</span></span></div><div class="wysibb-toolbar-btn wbb-italic"><span class="fonticon ve-tlb-italic1 btn-inner"></span><span class="btn-tooltip">Italic<ins></ins> <span class="tthotkey">[ctrl+i]</span></span></div><div class="wysibb-toolbar-btn wbb-underline"><span class="fonticon ve-tlb-underline1 btn-inner"></span><span class="btn-tooltip">Underline<ins></ins> <span class="tthotkey">[ctrl+u]</span></span></div></div><div class="wysibb-toolbar-container"><div class="wysibb-toolbar-btn wbb-justifyleft"><span class="fonticon ve-tlb-textleft1 btn-inner"></span><span class="btn-tooltip">Align left<ins></ins></span></div><div class="wysibb-toolbar-btn wbb-justifycenter" style="overflow: visible;"><span class="fonticon ve-tlb-textcenter1 btn-inner"></span><span class="btn-tooltip">Align center<ins></ins></span></div><div class="wysibb-toolbar-btn wbb-justifyright"><span class="fonticon ve-tlb-textright1 btn-inner"></span><span class="btn-tooltip">Align right<ins></ins></span></div></div><div class="wysibb-toolbar-container"><div class="wysibb-toolbar-btn wbb-removeformat"><span class="fonticon ve-tlb-removeformat1 btn-inner"></span><span class="btn-tooltip">Remove Format<ins></ins></span></div></div><div class="wysibb-toolbar-container modeSwitch"><div class="wysibb-toolbar-btn mswitch" unselectable="on"><span class="btn-inner modesw" unselectable="on">[bbcode]</span></div></div></div><div class="wysibb-text"><textarea name="content" id="editor" class="wysibb-texarea" style="display: none;"></textarea><div class="wysibb-text-editor wysibb-body" style="max-height:800px;min-height:0px" contenteditable="true"><span></span><br></div></div><div class="bottom-resize-line"></div></div>
-                </div>
-            </div>
-            <div class="col-md-12 submit-btn-room">
-                <a id="submit_form" class="btn btn-send-room" href="javascript:void(0);"><span class="fa fa-send"></span>Đăng tin</a>
             </div>
         </div>
-    </div>
-
+    </form>
 </div>

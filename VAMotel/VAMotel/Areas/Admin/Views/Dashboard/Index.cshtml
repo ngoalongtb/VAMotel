@@ -1,4 +1,4 @@
-﻿
+﻿@model VAMotel.Areas.Admin.Models.DashboardModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
@@ -18,7 +18,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>150</h3>
+                    <h3>@Model.NumberOfAccounts</h3>
 
                     <p>Tài khoản</p>
                 </div>
@@ -33,7 +33,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>53</h3>
+                    <h3>@Model.NumberOfCategories</h3>
 
                     <p>Danh mục</p>
                 </div>
@@ -48,7 +48,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>@Model.NumberOfPosts</h3>
 
                     <p>Bài viết</p>
                 </div>
@@ -63,7 +63,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>65</h3>
+                    <h3>@Model.NumberOfGroups</h3>
 
                     <p>Khu trọ</p>
                 </div>

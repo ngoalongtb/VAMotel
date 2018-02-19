@@ -5,39 +5,42 @@
     Layout = "~/Areas/Admin/Views/Shared/AdminMaster.cshtml";
 }
 
-<h2>Details</h2>
+<section class="content container-fluid">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Chi tiết khu trọ</h3>
+        </div>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TaiKhoan.mat_khau)
+                </dt>
 
-<div>
-    <h4>KhuTro</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TaiKhoan.mat_khau)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TaiKhoan.mat_khau)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TaiKhoan.mat_khau)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.da_xoa)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.da_xoa)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.da_xoa)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.da_xoa)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.dia_chi)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dia_chi)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.dia_chi)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.dia_chi)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ma }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            </dl>
+        </div>
+        <div class="box-footer">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ma }) |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</section>
