@@ -44,22 +44,22 @@ CREATE TABLE KhuTro(
 	dia_chi NVARCHAR(255),
 	chu_tro VARCHAR(255)
 )
-
 CREATE TABLE PhongTro(
 	ma INT IDENTITY PRIMARY KEY,
 	so_phong INT,
 	ma_khu_tro INT, 
-	nguoi_thue VARCHAR(255),
+	nguoi_thue NVARCHAR(255),
 	cmtnd VARCHAR(20)
 )
-
 CREATE TABLE LichSuThueNha(
 	ma INT IDENTITY PRIMARY KEY,
 	ma_phong INT,
-	nguoi_thue VARCHAR(255),
+	nguoi_thue NVARCHAR(255),
 	cmtnd VARCHAR(20),
 	ngay_thue DATE
 )
+
+select * from LichSuThueNha
 
 GO
 

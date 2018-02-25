@@ -45,7 +45,7 @@ namespace Model.EF
 
             modelBuilder.Entity<LichSuThueNha>()
                 .Property(e => e.nguoi_thue)
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<LichSuThueNha>()
                 .Property(e => e.cmtnd)
@@ -53,7 +53,7 @@ namespace Model.EF
 
             modelBuilder.Entity<PhongTro>()
                 .Property(e => e.nguoi_thue)
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<PhongTro>()
                 .Property(e => e.cmtnd)

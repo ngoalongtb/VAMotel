@@ -56,7 +56,7 @@ namespace VAMotel.Areas.Admin.Controllers
             {
                 db.PhongTroes.Add(phongTro);
                 db.SaveChanges();
-                return RedirectToRoute("/Admin/Rooms/Index?groupId=" + phongTro.ma_khu_tro);
+                return Redirect("/Admin/Rooms/Index?groupId=" + phongTro.ma_khu_tro);
             }
 
             ViewBag.ma_khu_tro = new SelectList(db.KhuTroes, "ma", "dia_chi", phongTro.ma_khu_tro);
@@ -90,7 +90,7 @@ namespace VAMotel.Areas.Admin.Controllers
             {
                 db.Entry(phongTro).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToRoute("/Admin/Rooms/Index?groupId=" + phongTro.ma_khu_tro);
+                return Redirect("/Admin/Rooms/Index?groupId=" + phongTro.ma_khu_tro);
             }
             ViewBag.ma_khu_tro = new SelectList(db.KhuTroes, "ma", "dia_chi", phongTro.ma_khu_tro);
             return View(phongTro);
@@ -119,7 +119,7 @@ namespace VAMotel.Areas.Admin.Controllers
             PhongTro phongTro = db.PhongTroes.Find(id);
             db.PhongTroes.Remove(phongTro);
             db.SaveChanges();
-            return RedirectToRoute("/Admin/Rooms/Index?groupId=" + phongTro.ma_khu_tro);
+            return Redirect("/Admin/Rooms/Index?groupId=" + phongTro.ma_khu_tro);
         }
 
         protected override void Dispose(bool disposing)
